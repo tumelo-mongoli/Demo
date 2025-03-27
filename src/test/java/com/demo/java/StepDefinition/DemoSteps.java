@@ -6,6 +6,8 @@ import com.demo.java.PageObjects.DemoPageObjects;
 import io.cucumber.java.en.*;
 import io.qameta.allure.Allure;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 //import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayInputStream;
@@ -63,68 +65,84 @@ public class DemoSteps {
 
     @Then("User enters a First Name")
     public void user_enters_a_first_name() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        demoPageObjects.enterFirstName(Fname);
+
     }
 
     @Then("User enters a Last Name")
     public void user_enters_a_last_name() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        demoPageObjects.enterLastName(Sname);
+
     }
 
     @Then("User enters a User Name")
     public void user_enters_a_user_name() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        Random random = new Random();
+        int randomNumber = random.nextInt(9000) + 1000; 
+        uniqueUsername = "John" + randomNumber;
+        demoPageObjects.enterUserName(uniqueUsername);
+
     }
 
     @Then("User enters a Password")
     public void user_enters_a_password() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        demoPageObjects.enterPassword("Password123");
+
     }
 
     @Then("Click the Company type")
-    public void click_the_company_type() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void click_the_company_type() throws InterruptedException {
+
+        demoPageObjects.clickCompanyName();
+        Thread.sleep(3000);
     }
 
     @Then("Selects a Role")
     public void selects_a_role() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        demoPageObjects.SelectRole("Admin");
+
     }
 
     @Then("User enters an Email Address")
     public void user_enters_an_email_address() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        demoPageObjects.enterEmailAddress("JohnTest@gmal.com");
+
     }
 
     @Then("User enters a Cell Phone Number")
     public void user_enters_a_cell_phone_number() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        demoPageObjects.enterCellPhoneNUmber("0721548562");
+
     }
 
     @Then("Click the save button")
     public void click_the_save_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        demoPageObjects.clickSaveButton();
+
     }
 
     @Then("Validate the data is saved")
     public void validate_the_data_is_saved() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        String name = driver.findElement(By.xpath("//td[contains(text(), '"+Fname+"')]")).getText();
+        String username = driver.findElement(By.xpath("//td[contains(text(), '"+uniqueUsername+"')]")).getText();
+        assertEquals(Fname, name);
+        assertEquals(uniqueUsername, username);
     }
 
     @Then("Close Browser")
     public void close_browser() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        
+        driver.quit();
+
     }
     
 
