@@ -14,13 +14,13 @@ private static WebDriver driver;
     @Before
     public void setUp() {
         // Set up ChromeDriver using webdriver-manager
-        // WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().setup();
 
-        // String browser = System.getProperty("browser", "chrome");   
+        String browser = System.getProperty("browser", "chrome");   
         
-        WebDriverManager.firefoxdriver().setup();
+        // WebDriverManager.firefoxdriver().setup();
 
-        String browser = System.getProperty("browser", "firefox");   
+        // String browser = System.getProperty("browser", "firefox");   
 
 
         driver = BrowserFactory.createDriver(browser);
