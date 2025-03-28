@@ -3,21 +3,23 @@ package com.demo.java.PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.support.FindBy;
 
 public class DemoPageObjects {
 
     private WebDriver driver;
-
+        
     public DemoPageObjects(WebDriver driver) {
         this.driver = driver;
     }
 
         public void clickAddUserButton() {
             driver.findElement(By.xpath("//button[contains(text(),'Add User')]")).click();
+            
         }
 
         public void enterFirstName(String firstName) {
-            driver.findElement(By.xpath("//input[@name='FirstName']")).sendKeys(firstName);
+            driver.findElement(By.name("//input[@name='FirstName']")).sendKeys(firstName);
         }
 
     public void enterLastName(String lastName) {
@@ -32,10 +34,33 @@ public class DemoPageObjects {
         driver.findElement(By.xpath("//input[@name='Password']")).sendKeys(Password);
     }
 
-    public void clickCompanyName() {
-        driver.findElement(By.xpath("//*[text()='Customer']//../td/label[1]/input")).click();
+    // public void clickCompanyName() {
+    //     driver.findElement(By.xpath("//*[text()='Customer']//../td/label[1]/input")).click();
 
+    // }
+
+    // @FindBy(xpath = "//*[text()='Customer']//../td/label[1]/input")
+    // private WebElement companyAAARadio;
+    
+    // @FindBy(xpath = "//*[text()='Customer']//../td/label[2]/input")
+    // private WebElement companyBBBRadio;
+
+
+        public void selectCompany(String company) {
+            
+            switch(company.toUpperCase()) {
+        case "COMPANY AAA":
+        driver.findElement(By.xpath("//*[text()='Customer']//../td/label[1]/input")).click();
+            break;
+        case "COMPANY BBB":
+        driver.findElement(By.xpath("//*[text()='Customer']//../td/label[2]/input")).click();
+            break;
+        default:
+            throw new IllegalArgumentException("Invalid company: " + company);
     }
+}
+
+
 
     public void SelectRole(String optionText) {
 
