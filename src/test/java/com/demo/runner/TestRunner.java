@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/java/com/demo/resources/Feature",
-        tags = "@CreateProfile",
+        tags = "@SearchForItem",
         glue = {"com.demo.java.Hooks", "com.demo.java.StepDefinition"}, 
         dryRun=false,
 		plugin= {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}

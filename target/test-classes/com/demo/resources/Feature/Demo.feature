@@ -16,6 +16,7 @@ Feature: User Profile Creation
     And User selects "<company>" as company
     And User selects "<role>" as role
     And Click the save button
+    And Validate the entered data appears correctly in the table
     Then The page title should be "<expected_title>"
     And Close browser
 
